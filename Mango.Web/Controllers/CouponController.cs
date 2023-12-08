@@ -23,9 +23,14 @@ namespace Mango.Web.Controllers
             {
                 list = JsonConvert.DeserializeObject<List<CouponDto>>(Convert.ToString(response.Result));   
             }
+            else
+            {
+                TempData["error"] = response.Message;
+            }
             return View(list);
         }
 
+        #region Create region
         public async Task<IActionResult> CouponCreate()
         {
             return View();
@@ -38,12 +43,19 @@ namespace Mango.Web.Controllers
                 ResponseDto? response = await _couponService.CreateCouponAsync(model);
                 if (response != null && response.IsSuccess)
                 {
+                    TempData["success"] = "Coupon Created    Successfully";
                     return RedirectToAction(nameof(CouponIndex));
+                }
+                else
+                {
+                    TempData["error"] = response.Message;
                 }
             }
             return View(model);
         }
+        #endregion 
 
+        #region Delete Coupon
         public async Task<IActionResult> CouponDelete(int couponId)
         {
             ResponseDto? response = await _couponService.GetCouponByIdAsync(couponId);
@@ -51,6 +63,10 @@ namespace Mango.Web.Controllers
             {
                 CouponDto? model = JsonConvert.DeserializeObject<CouponDto>(Convert.ToString(response.Result));
                 return View(model);
+            }
+            else
+            {
+                TempData["error"] = response.Message;
             }
             return NotFound();
         }
@@ -60,9 +76,17 @@ namespace Mango.Web.Controllers
             ResponseDto? response = await _couponService.DeleteCouponAsync(couponDto.CouponId);
             if (response != null && response.IsSuccess)
             {
+                TempData["success"] = "Coupon Deleted Successfully";
                 return RedirectToAction(nameof(CouponIndex));
+            }
+            else
+            {
+                TempData["error"] = response.Message;
             }
             return View(couponDto);
         }
+        #endregion
+
+
     }
 }
