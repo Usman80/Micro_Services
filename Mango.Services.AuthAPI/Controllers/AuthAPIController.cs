@@ -17,7 +17,7 @@ namespace Mango.Services.AuthAPI.Controllers
             _authService = authService;
             _response = new();
         }
-
+        #region Register
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegistrationRequestDto model)
         {
@@ -30,6 +30,9 @@ namespace Mango.Services.AuthAPI.Controllers
             }
             return Ok(_response);
         }
+        #endregion
+
+        #region Login
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto model)
         {
@@ -43,5 +46,21 @@ namespace Mango.Services.AuthAPI.Controllers
             _response.Result = loginResponse;
             return Ok(_response);
         }
+        #endregion
+
+        #region AssignRole
+        [HttpPost("AssignRole")]
+        public async Task<IActionResult> AssignRole([FromBody] RegistrationRequestDto model)
+        {
+            var assignRoleSuccessful = await _authService.AssignRole(model.Email, model.Role.ToUpper());
+            if (!assignRoleSuccessful)
+            {
+                _response.IsSuccess = false;
+                _response.Message = "Error Encountered";
+                return BadRequest(_response);
+            }
+            return Ok(_response);
+        }
+        #endregion
     }
 }
