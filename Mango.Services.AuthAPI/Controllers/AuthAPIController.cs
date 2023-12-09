@@ -2,6 +2,7 @@
 using Mango.Services.AuthAPI.Service.IService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace Mango.Services.AuthAPI.Controllers
 {
@@ -21,13 +22,22 @@ namespace Mango.Services.AuthAPI.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegistrationRequestDto model)
         {
+            //var errorMessage = await _authService.Register(model);
+            //if(!string.IsNullOrEmpty(errorMessage))
+            //{
+            //    _response.IsSuccess = false;
+            //    _response.Message= errorMessage;    
+            //    return BadRequest(_response);
+            //}
+            //return Ok(_response);
             var errorMessage = await _authService.Register(model);
-            if(!string.IsNullOrEmpty(errorMessage))
+            if (!string.IsNullOrEmpty(errorMessage))
             {
                 _response.IsSuccess = false;
-                _response.Message= errorMessage;    
+                _response.Message = errorMessage;
                 return BadRequest(_response);
             }
+            //await _messageBus.PublishMessage(model.Email, _configuration.GetValue<string>("TopicAndQueueNames:RegisterUserQueue"));
             return Ok(_response);
         }
         #endregion
@@ -52,11 +62,19 @@ namespace Mango.Services.AuthAPI.Controllers
         [HttpPost("AssignRole")]
         public async Task<IActionResult> AssignRole([FromBody] RegistrationRequestDto model)
         {
+            //var assignRoleSuccessful = await _authService.AssignRole(model.Email, model.Role.ToUpper());
+            //if (!assignRoleSuccessful)
+            //{
+            //    _response.IsSuccess = false;
+            //    _response.Message = "Error Encountered";
+            //    return BadRequest(_response);
+            //}
+            //return Ok(_response);
             var assignRoleSuccessful = await _authService.AssignRole(model.Email, model.Role.ToUpper());
             if (!assignRoleSuccessful)
             {
                 _response.IsSuccess = false;
-                _response.Message = "Error Encountered";
+                _response.Message = "Error encountered";
                 return BadRequest(_response);
             }
             return Ok(_response);
