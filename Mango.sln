@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mango.Services.CouponAPI", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mango.Web", "Mango.Web\Mango.Web.csproj", "{E04494B9-B0B6-4ECA-8430-4BD1E0B11EA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mango.Services.AuthAPI", "Mango.Services.AuthAPI\Mango.Services.AuthAPI.csproj", "{D4FEAA71-DF35-4AD9-9938-D94E9C226CD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mango.Services.AuthAPI", "Mango.Services.AuthAPI\Mango.Services.AuthAPI.csproj", "{D4FEAA71-DF35-4AD9-9938-D94E9C226CD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mango.Services.ProductAPI", "Mango.Services.ProductAPI\Mango.Services.ProductAPI.csproj", "{7A06C6F3-FD88-451A-86F9-89E906C0B464}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{D4FEAA71-DF35-4AD9-9938-D94E9C226CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4FEAA71-DF35-4AD9-9938-D94E9C226CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4FEAA71-DF35-4AD9-9938-D94E9C226CD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A06C6F3-FD88-451A-86F9-89E906C0B464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A06C6F3-FD88-451A-86F9-89E906C0B464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A06C6F3-FD88-451A-86F9-89E906C0B464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A06C6F3-FD88-451A-86F9-89E906C0B464}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{7942A1E6-FBA4-454E-B5F4-2F5FEDF62344} = {FB3195EA-20A8-4076-B3DB-8F4E07519951}
 		{E04494B9-B0B6-4ECA-8430-4BD1E0B11EA4} = {BD2678C6-7CEF-4938-93DC-82E02DDEAD37}
 		{D4FEAA71-DF35-4AD9-9938-D94E9C226CD8} = {FB3195EA-20A8-4076-B3DB-8F4E07519951}
+		{7A06C6F3-FD88-451A-86F9-89E906C0B464} = {FB3195EA-20A8-4076-B3DB-8F4E07519951}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8590360B-0586-42CC-99E7-E09F1F6ED77E}
