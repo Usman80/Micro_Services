@@ -104,7 +104,6 @@ namespace Mango.Services.ProductAPI.Controllers
             return _response;
         }
 
-
         [HttpPut]
         [Authorize(Roles = "ADMIN")]
         public ResponseDto Put(ProductDto ProductDto)
